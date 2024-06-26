@@ -52,9 +52,20 @@ const Inputform = () => {
   const filteredBooks = books.filter((book) =>
     book.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+const openLibrary=()=>{
+  {
+    window.alert("opening you library .....")
+    setTimeout(() => {
+      document.body.classList.add("open")
+    },2000);
+    
+  }
+}
   return (
     <>
+    <div className="whole">
+      <button onClick={openLibrary} className="openLibrary">Open Library</button>
+    <div className="all">
       <div className="form">
         <form onSubmit={handleData}>
           <h1>ADD A BOOK</h1>
@@ -130,6 +141,8 @@ const Inputform = () => {
         {books.length > 0 && (
           <button onClick={handleDeletion}>Delete All Books</button>
         )}
+      </div>
+      </div>
       </div>
     </>
   );

@@ -62,3 +62,22 @@
     width: 100%;
     justify-content: space-between;
 }
+.all{
+    display: none;
+}
+.openLibrary{
+    justify-content: center;
+    padding: 10px;
+    margin: 10% 45%;
+    &:hover{
+        background-color: bisque;
+        color: black;
+    }
+}
+
+.open .all{
+    display: block;
+}
+.open .openLibrary{
+display: none;
+}
