@@ -75,9 +75,76 @@
     }
 }
 
+.closing{
+    display: none;
+}
+.open .closing{
+    display: block;
+    margin-top: .5em;
+    padding: 10px;
+    &:hover{
+        background-color: brown;
+    }
+}
 .open .all{
     display: block;
 }
 .open .openLibrary{
 display: none;
 }
+.close .all{
+    display: none;
+    transition: display .5s ease-out;
+}
+.close .openLibrary{
+    display: block;
+    }
+.close .closing{
+    display: none;
+}
+.book-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+    }
+  
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  
+    tr:hover {
+      background-color: #f2f2f2;
+    }
+  
+    td {
+      max-width: 200px; /* Adjust the max-width of each cell as needed */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  
+    button {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  }
+  
+  .pagination {
+    margin-top: 10px;
+    text-align: center;
+  
+    button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  }

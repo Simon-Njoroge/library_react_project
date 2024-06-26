@@ -6,6 +6,7 @@ body{
    
 }
 .header{
+    position: relative;
     border-radius: 20px;
     padding: .5em;
     background-color: bisque;
@@ -14,4 +15,8 @@ body{
     &:hover{
         
     }
+}
+.fix .header{
+    background-color: red;
+    position: fixed;
 }

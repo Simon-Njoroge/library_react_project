@@ -62,19 +62,24 @@ const Inputform = () => {
 
   const openLibrary = () => {
     window.alert("opening library please wait .....");
+    document.body.classList.remove("close");
     setTimeout(() => {
       document.body.classList.add("open");
     }, 1500);
   };
-
+const closeLibrary=()=>{
+  document.body.classList.remove("open");
+  document.body.classList.add("close");
+}
   return (
     <>
       <div className="whole">
-        <button onClick={openLibrary} className="openLibrary">
-          Open Library
-        </button>
+        <div>
+        <button onClick={openLibrary} className="openLibrary">Open Library</button>
+        <button onClick={closeLibrary} className="closing">closeLibrary</button>
+        </div>
         <div className="all">
-          <button>simon</button>
+         
           <div className="form">
             <form onSubmit={handleData}>
               <h1>ADD A BOOK</h1>
@@ -162,15 +167,11 @@ const Inputform = () => {
                 <button
                   onClick={() => paginate(currentPage - 1)}
                   disabled={currentPage === 1}
-                >
-                  Previous
-                </button>
+                > Previous</button>
                 <button
                   onClick={() => paginate(currentPage + 1)}
                   disabled={currentBooks.length < booksPerPage}
-                >
-                  Next
-                </button>
+                > Next</button>
               </div>
             )}
           </div>
