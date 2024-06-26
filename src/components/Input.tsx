@@ -14,6 +14,8 @@ const Inputform = () => {
   const [author, setAuthor] = useState<string>("");
   const [year, setYear] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const booksPerPage = 5;
 
   useEffect(() => {
     const storedBooks = localStorage.getItem('books');
@@ -40,7 +42,6 @@ const Inputform = () => {
     updatedBooks.splice(index, 1);
     setBooks(updatedBooks);
 
-   
     localStorage.setItem('books', JSON.stringify(updatedBooks));
   };
 
@@ -52,97 +53,128 @@ const Inputform = () => {
   const filteredBooks = books.filter((book) =>
     book.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-const openLibrary=()=>{
-  {
-    window.alert("opening you library .....")
+
+  const indexOfLastBook = currentPage * booksPerPage;
+  const indexOfFirstBook = indexOfLastBook - booksPerPage;
+  const currentBooks = filteredBooks.slice(indexOfFirstBook, indexOfLastBook);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const openLibrary = () => {
+    window.alert("opening library please wait .....");
     setTimeout(() => {
-      document.body.classList.add("open")
-    },2000);
-    
-  }
-}
+      document.body.classList.add("open");
+    }, 1500);
+  };
+
   return (
     <>
-    <div className="whole">
-      <button onClick={openLibrary} className="openLibrary">Open Library</button>
-    <div className="all">
-      <div className="form">
-        <form onSubmit={handleData}>
-          <h1>ADD A BOOK</h1>
-          <label htmlFor="title">Book Title:</label>
-          <br />
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            ref={inputRef}
-            required
-          />
-          <br />
-          <br />
-          <label htmlFor="author">Author:</label>
-          <br />
-          <input
-            type="text"
-            id="author"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            required
-          />
-          <br />
-          <br />
-          <label htmlFor="year">Publication Year:</label>
-          <br />
-          <input
-            type="text"
-            id="year"
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-            required
-          />
-          <br />
-          <br />
-          <button type="submit">Submit</button>
-        </form>
-        <input
-          type="text"
-          id="searching"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search by title"
-        />
-      
-      </div>
-      <div className="data">
-        <h2>Books List:</h2>
-        {filteredBooks.length === 0 ? (
-          <p>No books found.</p>
-        ) : (
-          <ul>
-            {filteredBooks.map((book, index) => (
-              <div key={index} className="added">
-                <table className="tableName2">
-                  <tbody>
-                    <tr>
-                      <td>Title: <span>{book.title}</span></td>
-                      <td>Author: <span>{book.author}</span></td>
-                      <td>Year: <span>{book.year}</span></td>
+      <div className="whole">
+        <button onClick={openLibrary} className="openLibrary">
+          Open Library
+        </button>
+        <div className="all">
+          <button>simon</button>
+          <div className="form">
+            <form onSubmit={handleData}>
+              <h1>ADD A BOOK</h1>
+              <label htmlFor="title">Book Title:</label>
+              <br />
+              <input
+                type="text"
+                id="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                ref={inputRef}
+                required
+              />
+              <br />
+              <br />
+              <label htmlFor="author">Author:</label>
+              <br />
+              <input
+                type="text"
+                id="author"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
+                required
+              />
+              <br />
+              <br />
+              <label htmlFor="year">Publication Year:</label>
+              <br />
+              <input
+                type="text"
+                id="year"
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+                required
+              />
+              <br />
+              <br />
+              <button type="submit">Submit</button>
+            </form>
+            <input
+              type="text"
+              id="searching"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search by title"
+            />
+          </div>
+          <div className="data">
+            <h2>Books List:</h2>
+            {currentBooks.length === 0 ? (
+              <p>No books found.</p>
+            ) : (
+              <table className="book-table">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Year</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {currentBooks.map((book, index) => (
+                    <tr key={index}>
+                      <td>{book.title}</td>
+                      <td>{book.author}</td>
+                      <td>{book.year}</td>
                       <td>
-                        <button onClick={() => deleteBook(index)}>Delete</button>
+                        <button onClick={() => deleteBook(index)}>
+                          Delete
+                        </button>
                       </td>
                     </tr>
-                  </tbody>
-                </table>
+                  ))}
+                </tbody>
+              </table>
+            )}
+            {books.length > 0 && (
+              <button onClick={handleDeletion}>Delete All Books</button>
+            )}
+
+            
+            {filteredBooks.length > booksPerPage && (
+              <div className="pagination">
+                <button
+                  onClick={() => paginate(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </button>
+                <button
+                  onClick={() => paginate(currentPage + 1)}
+                  disabled={currentBooks.length < booksPerPage}
+                >
+                  Next
+                </button>
               </div>
-            ))}
-          </ul>
-        )}
-        {books.length > 0 && (
-          <button onClick={handleDeletion}>Delete All Books</button>
-        )}
-      </div>
-      </div>
+            )}
+          </div>
+        </div>
       </div>
     </>
   );
