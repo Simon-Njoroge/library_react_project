@@ -66,7 +66,7 @@ const Inputform = () => {
     document.body.classList.remove("close");
     setTimeout(() => {
       document.body.classList.add("open");
-    }, 1500);
+    }, 1000);
   };
 const closeLibrary=()=>{
   document.body.classList.remove("open");
