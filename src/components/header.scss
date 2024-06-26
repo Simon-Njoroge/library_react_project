@@ -1,0 +1,17 @@
+body{
+    background-image: url('../images/library.avif');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 2em 3em;
+   
+}
+.header{
+    border-radius: 20px;
+    padding: .5em;
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    &:hover{
+        
+    }
+}

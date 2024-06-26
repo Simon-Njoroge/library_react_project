@@ -1,0 +1,64 @@
+.form{
+    margin: 2em 25%;
+    justify-content: center;
+    background-color: beige;
+    padding: 1em;
+    border-radius: 10px;
+}
+.form h1{
+    margin-bottom: .5em;
+}
+.form input{
+    width: 100%;
+    border: 1px solid black;
+    height: 20px;
+    border-radius: 5px;
+    padding: 0, .3em;
+}
+.form button{
+    width: 100%;
+    margin-top: .5em;
+    text-align: center;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    &:hover{
+        background-color: antiquewhite;
+    }
+}
+.data{
+    margin: 2em 25%;
+    justify-content: center;
+    background-color: beige;
+    padding: 1em;
+    border-radius: 10px;
+}
+.added:nth-child(odd){
+    margin-top: 10px;
+    background-color: bisque;
+}
+.added:nth-child(even){
+    margin-top: 10px;
+    background-color: grey;
+}
+.added span{
+    color: red;
+    font-weight: bold;
+}
+.back .form{
+    background-color: black;
+    color: white;
+}
+.back .data{
+    background-color: black;
+    color: white;
+}
+.tableName tr th{
+    width: 25%;
+    margin: 2em 25%;
+    justify-content: space-evenly;
+}
+.tableName2 tr th{
+    width: 100%;
+    justify-content: space-between;
+}
