@@ -52,6 +52,7 @@ const Inputform = () => {
 
   const filteredBooks = books.filter((book) =>
     book.title.toLowerCase().includes(searchTerm.toLowerCase())
+   
   );
 
   const indexOfLastBook = currentPage * booksPerPage;
