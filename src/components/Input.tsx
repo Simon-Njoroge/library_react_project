@@ -1,5 +1,5 @@
 import {useForm, SubmitHandler} from "react-hook-form"
-import './input.scss'
+import '../index.scss'
  export interface Tbook{
   id:number,
   Title:string,
@@ -17,7 +17,7 @@ const InputData=()=>{
   const onSubmit: SubmitHandler<Tbook>=(data)=>console.log(data)
   return(
     <>
-    <form action="" className="grid grid-cols-1 place-items-center border-x-2" id='hiding' onSubmit={handleSubmit(onSubmit)}>
+    <form action="" className="grid grid-cols-1 place-items-center border-2 border-black rounded bg-black p-0 mx-96 p-1 my-2" id='hiding' onSubmit={handleSubmit(onSubmit)}>
     {/* <label className="input input-bordered flex items-center gap-2">
   Title
 </label> */}

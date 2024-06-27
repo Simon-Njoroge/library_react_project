@@ -1,6 +1,7 @@
-import './header.scss'
-
-
+import '../index.scss'
+import me from '../images/meS.jpg'
+import { FileQuestion , Trash2 , House,Plus,ThumbsUp , BookOpenText } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const Header =( )=>{
  
@@ -8,7 +9,19 @@ const Header =( )=>{
         document.body.classList.add("showA")
         document.body.classList.remove("Hinput")
     }}
-
+    const [likeCount, setLikeCount] = useState<number>( () => parseInt(localStorage.getItem('likes') || '0')); 
+    const handleLikes = () => {
+      const liked:number =likeCount + 1; 
+     localStorage.setItem('likes',liked.toString())
+      setLikeCount(liked)
+    };
+  useEffect(()=>{
+    handleLikes()
+  },[])
+  const showSample=()=>{
+    document.body.classList.add("sample")
+    document .body.classList.remove("hidebooks")
+  }
  return(
     <>
    
@@ -29,9 +42,13 @@ const Header =( )=>{
           d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </button></div>
-  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-    <li onClick={handleAdd}><a >ADD A book</a></li>
-    <li><a>DELETE A BOOK</a></li>
+  <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-5 shadow">
+    <li className='my-1'><a href=""><House />Home</a></li>
+    <li onClick={handleAdd}><a ><Plus />add A book</a></li>
+    <li className='my-1'><a> <Trash2 />Delete a Book</a></li>
+    <li className='my-1' onClick={showSample}><a> <BookOpenText />Sample Books</a></li>
+    <li className='my-1'><a href='https://library-api-871a.onrender.com/' target='_blank'> <FileQuestion /> help</a></li>
+    <li className='my-1'><button onClick={handleLikes}><ThumbsUp />Like<span>{localStorage.getItem("likes")}<span/></span></button></li>
   </ul>
 </div>
 
@@ -63,7 +80,11 @@ const Header =( )=>{
       d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
   </svg>
 </label>
-
+<div className="avatar">
+  <div className="ring-primary ring-offset-base-100  rounded-full ring ring-offset-2 w-10 mx-2 ">
+    <img src={me} width='10px' />
+  </div>
+</div>
   </div>
 </div>
     </>

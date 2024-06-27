@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#sample{
+    position: absolute;
+    opacity: 0;
+}
+.sample #sample{
+    position: relative;
+    display: inline-flex;
+    opacity: 1;
+    cursor: pointer;
+}
+.hidebooks #sample{
+    position: absolute;
+    display: none;
+    opacity: 0;
+}
+#hiding{
+    position: absolute;
+   opacity: 0;
+}
+.showA #hiding{
+    position: relative;
+    opacity: 1;
+}
+.Hinput #hiding{
+    position: absolute;
+   opacity: 0;
+}
