@@ -1,7 +1,8 @@
 
 import './App.scss'
 import Header from './components/header'
-import Inputform from './components/Input'
+import Inputdata from './components/Input'
+import Books from './components/data'
 function App() {
   
 
@@ -9,7 +10,8 @@ function App() {
     <>
     <div>
       <Header />
-      <Inputform />
+      <Inputdata />
+      <Books />
     </div>
     </>
   )
