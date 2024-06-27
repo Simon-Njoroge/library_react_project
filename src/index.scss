@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 #sample{
     position: absolute;
     opacity: 0;
@@ -20,10 +21,12 @@
 #hiding{
     position: absolute;
    opacity: 0;
+
 }
 .showA #hiding{
     position: relative;
     opacity: 1;
+    transition: opacity 1s ease-in-out;
 }
 .Hinput #hiding{
     position: absolute;
