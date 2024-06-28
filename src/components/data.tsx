@@ -65,6 +65,7 @@ const Books = () => {
           />
         </svg>
       </label>
+      <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" id="search"/>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>

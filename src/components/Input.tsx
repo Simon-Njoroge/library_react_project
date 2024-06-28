@@ -10,14 +10,16 @@ import '../index.scss'
 const InputData=()=>{
 
   const handleFhide=()=>{
+    window.alert("book added successfuly")
     document.body.classList.add("Hinput")
     document.body.classList.remove("showA")
+
   }
   const {register,handleSubmit}=useForm<Tbook>()
   const onSubmit: SubmitHandler<Tbook>=(data)=>console.log(data)
   return(
     <>
-    <form action="" className="grid grid-cols-1 place-items-center border-2 border-black rounded bg-black p-0 mx-96 p-1 my-2" id='hiding' onSubmit={handleSubmit(onSubmit)}>
+    <form action="" className="grid grid-cols-1 place-items-center border-2 border-black rounded bg-black p-0 mx-96 pmy-2 max-md:w-7" id='hiding' onSubmit={handleSubmit(onSubmit)}>
     {/* <label className="input input-bordered flex items-center gap-2">
   Title
 </label> */}

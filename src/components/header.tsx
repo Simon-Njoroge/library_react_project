@@ -28,7 +28,7 @@ const Header =( )=>{
  return(
     <>
    
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 flex-wrap">
   <div className="flex-none">
    
     <div className="dropdown dropdown-hover">
